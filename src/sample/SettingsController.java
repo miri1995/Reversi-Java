@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.scenario.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,10 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,11 +60,19 @@ public class SettingsController{
      int size = Integer.parseInt(boardSize.getValue().toString());
       //writeToFile("settingsFile.txt");
 
-        PrintWriter bufferedWriter=new  PrintWriter(new FileWriter("settingsFile.txt"));
-        bufferedWriter.write(String.valueOf(player.getValue()));
+        PrintWriter bufferedWriter=null;
+        try { bufferedWriter = new PrintWriter(new OutputStreamWriter(
+                new FileOutputStream("Settings.txt")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return;
+        }
+
+       bufferedWriter.write(String.valueOf(player.getValue()));
         bufferedWriter.write(String.valueOf(colorPlayer1.getValue()));
         bufferedWriter.write(String.valueOf(colorPlayer2.getValue()));
         bufferedWriter.write(String.valueOf(Integer.parseInt(boardSize.getValue().toString())));
+        bufferedWriter.close();
         Stage primaryStage=new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Reversi-Menu");
@@ -82,3 +88,4 @@ public class SettingsController{
 
     }*/
 }
+
