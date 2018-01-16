@@ -1,5 +1,8 @@
 package reversiapp;
 
+import javafx.fxml.FXMLLoader;
+
+import java.io.IOException;
 import java.util.List;
 
 public class Game {
@@ -40,7 +43,7 @@ public class Game {
     /**
      * plays the game.
      */
-    public void play() {
+    /*public void play() {
         while (player1Moves || player2Moves) {
             playTurn(player1);
             System.out.println("PLAYER 1 SCORE: " + tracker.getPlayer1Score());
@@ -50,7 +53,7 @@ public class Game {
             System.out.println("PLAYER 2 SCORE: " + tracker.getPlayer2Score());
         }
         this.determineHighScore(player1, player2);
-    }
+    }*/
 
     /**
      * plays a turn.
@@ -78,23 +81,19 @@ public class Game {
      * @param player2 - player 2.
      */
     private void determineHighScore(Player player1, Player player2) {
-//        char player1Disk = player1.getColor();
-//        char player2Disk = player2.getColor();
-//        int player1Score = 0, player2Score = 0;
-//        int bSize = board.getSize();
-//        for (int i = 0; i < bSize; i++) {
-//            for (int j = 0; j < bSize; j++) {
-//                Piece current = board.getCell(i, j);
-//                char disk = current.getDisk();
-//                if (disk == player1Disk) {
-//                    player1Score++;
-//                } else if (disk == player2Disk) {
-//                    player2Score++;
-//                }
-//            }
-//        }
+ FXMLLoader fxmlLoader = new
+                FXMLLoader(getClass().getResource("winner.fxml"));
+        fxmlLoader.setRoot(this);
+       fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
         int player1Score = tracker.getPlayer1Score();
         int player2Score = tracker.getPlayer2Score();
+
         display.displayEndScreen(player1, player2, board, player1Score,
                 player2Score);
         // ################### REMOVE THIS

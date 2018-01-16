@@ -17,7 +17,7 @@
                 <Label  fx:id="playerTurn" />
                 <Label  fx:id="player1Score"/>
                 <Label  fx:id="player2Score"/>
-                <Button fx:id="sMoves" onAction="#showMoves" />
+                <Button fx:id="sMoves" onAction="#showMoves" text="click to see options" />
             </children>
         </VBox>
     </children>

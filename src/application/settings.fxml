@@ -10,9 +10,15 @@
 <GridPane alignment="CENTER" hgap="10" prefHeight="280.0" prefWidth="503.0" style="-fx-background-color: GREY;" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
     <padding><Insets bottom="10" left="25" right="25" top="25" /></padding>
     <children>
+        <Text fill="#0d5cb5" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings:" textAlignment="LEFT" wrappingWidth="327.7294921875">
+            <font>
+                <Font name="System Bold Italic" size="21.0" />
+            </font>
+        </Text>
         <fx:define>
             <ToggleGroup fx:id="players"/>
         </fx:define>
+
         <Label text="First Player:" GridPane.rowIndex="2" />
         <RadioButton fx:id="firstPlayer" toggleGroup="$players" prefHeight="21.0" prefWidth="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
@@ -35,7 +41,7 @@
         <HBox alignment="bottom_right" GridPane.columnIndex="2" GridPane.rowIndex="6" />
         <Text fx:id="messageText" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
-        <Button onAction="#done" prefHeight="25.0" prefWidth="70.0" text="Done" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+        <Button onAction="#done" prefHeight="25.0" prefWidth="70.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="7" />
         <Button onAction="#back" prefHeight="25.0" prefWidth="70.0" text="Back" GridPane.columnIndex="0" GridPane.rowIndex="7" />
     </children>
     <columnConstraints>

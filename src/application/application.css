@@ -1,5 +1,5 @@
 .root {
-    -fx-background-image: url("dolphin-fact.jpg")
+    -fx-background-image: url("menu.jpg")
 }
 .label {
 -fx-font-size: 12px;
@@ -10,7 +10,7 @@
 -fx-font-weight: bold;
 -fx-background-color: linear-gradient(#61a2b1, #2A5058);
 }.root {
-     -fx-background-image: url("dolphin-fact.jpg")
+     -fx-background-image: url("menu.jpg")
  }
  .label {
  -fx-font-size: 12px;
@@ -37,7 +37,7 @@
 #welcomeText {
 -fx-font-size: 32px;
 -fx-font-family: Arial;
--fx-fill: rgb(85,87,83);
+-fx-fill: rgb(80,87,83);
 }
 .setStyle{
     -fx-border-color: lightblue;

@@ -42,7 +42,7 @@ public class GuiBoard extends GridPane {
         int cellWidth = width / board.getSize();
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
-                Rectangle rect = new Rectangle(cellWidth, cellHeight, Color.LAVENDER);
+                Rectangle rect = new Rectangle(cellWidth, cellHeight, Color.rgb(91,201,196));
                 rect.setStroke(Color.BLACK);
                 this.add(rect, j, i);
                 if (this.board.getCell(i,j).getDisk() == Sign.kBlacks) {

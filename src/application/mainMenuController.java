@@ -1,5 +1,6 @@
 package application;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,10 +11,7 @@ import reversiapp.Board;
 import reversiapp.Game;
 
 public class mainMenuController {
-    @FXML
-    protected void exit(javafx.event.ActionEvent event) {
 
-    }
     @FXML
     protected void play(javafx.event.ActionEvent event){
         try {
@@ -40,5 +38,9 @@ public class mainMenuController {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    protected void exit(javafx.event.ActionEvent event) {
+       Platform.exit();
     }
 }

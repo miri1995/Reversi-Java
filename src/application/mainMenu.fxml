@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,8 +10,22 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.mainMenuController">
     <children>
-        <Button alignment="BOTTOM_CENTER" layoutX="150.0" layoutY="100.0" mnemonicParsing="false" text="Play Reversi" onAction="#play"/>
-        <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#settings" text="Settings" />
-        <Button  mnemonicParsing="false" text="Exit"/>
+      <Text fill="#0d5cb5" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Reversi Game!" textAlignment="CENTER" wrappingWidth="327.7294921875">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Text>
+        <Button alignment="BOTTOM_CENTER" layoutX="150.0" layoutY="100.0" mnemonicParsing="false" onAction="#play" prefHeight="26.0" prefWidth="140.0" text="Play Reversi" textFill="#8b189b">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font></Button>
+        <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#settings" prefHeight="26.0" prefWidth="136.0" text="Settings" textFill="#8b189b">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font></Button>
+        <Button mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="128.0" text="Exit" textAlignment="CENTER" textFill="#8b189b">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font></Button>
     </children>
 </VBox>
