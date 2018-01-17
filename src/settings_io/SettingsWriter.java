@@ -12,7 +12,7 @@ import reversiapp.GameSettings;
 public class SettingsWriter {
 
     /**
-     * @param settings - a game settings object to write.
+     * @param settings - a game settings to write.
      */
     public static void writeFile(GameSettings settings) {
         PrintWriter writer = null;
@@ -32,7 +32,7 @@ public class SettingsWriter {
 
     /**
      * @param settings - a game settings object.
-     * @return - a list of strings to write to the file.
+     * @return - a list of strings that should be written to the file.
      */
     private static List<String> settingsFields(GameSettings settings) {
         List<String> fields = new LinkedList<String>();

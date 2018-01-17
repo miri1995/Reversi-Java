@@ -7,22 +7,22 @@ public class Piece {
     private char disk;
 
     /**
-     * C'tor. sets the disk to empty.
+     * * constructor
      *
-     * @param newRow
-     *            - row value.
-     * @param newCol
-     *            - column value.
+     * @param row
+     *
+     * @param col
+     *
      */
-    public Piece(int newRow, int newCol) {
-        this.row = newRow;
-        this.col = newCol;
+    public Piece(int row, int col) {
+        this.row = row;
+        this.col = col;
         this.disk = Sign.kEmpty;
     }
 
     /**
      *
-     * @return - row value of cell.
+     * @return row number
      */
     public int getRow() {
         return this.row;
@@ -30,43 +30,44 @@ public class Piece {
 
     /**
      *
-     * @return - column value of cell.
+     * @return column number
      */
     public int getCol() {
         return this.col;
     }
     /**
      *
-     * @return - disk value of the cell.
+     * @return disk number
      */
     public char getDisk() {
         return this.disk;
     }
     /**
-     * Setter for disk.
+     * Set the disk
      *
-     * @param newDisk
-     *            - new disk value.
+     * @param newDisk  new disk value
+     *
      */
     public void setDisk(char newDisk) {
         this.disk = newDisk;
     }
 
     @Override
-    /**
-     * Represents the cell as the disk value.
-     */
     public String toString() {
         return Character.toString(this.disk);
     }
 
+    /**
+     *
+     * @return - true if the piece id true
+     */
     public boolean equals(Piece other) {
         return this.row == other.getRow() && this.col == other.getCol();
     }
 
     /**
      *
-     * @return - String representation of the coordinate of the cell.
+     * @return - String representation of the coordinate of the piece
      */
     public String toCoordinate() {
         String rowStr = String.valueOf(this.row + 1);

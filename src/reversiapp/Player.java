@@ -5,21 +5,21 @@ import java.util.List;
 public interface Player {
     /**
      *
-     * @param moves
-     *            - a list of possible moves.
-     * @return - a picked cell to place the disk.
+     * @param moves list of possible moves
+     *
+     * @return the place to put the piece
      */
     public Piece pickMove(List<Piece> moves);
 
     /**
      *
-     * @return - the color of the player.
+     * @return the color of the player
      */
     public char getColor();
 
     /**
      *
-     * @return
+     * @return the name of the player
      */
     public String playerName();
 

@@ -13,7 +13,9 @@ import reversiapp.GameSettings;
 import settings_io.SettingsReader;
 
 import java.io.IOException;
-
+/**
+ * C'tor.
+ */
 public class GuiBoard extends GridPane {
     private Board board;
     private int height;
@@ -33,7 +35,9 @@ public class GuiBoard extends GridPane {
             throw new RuntimeException(exception);
         }
     }
-
+    /**
+     * draws the board of the game.
+     */
     public void draw() {
         this.getChildren().clear();
         this.height = (int) this.getPrefHeight();
@@ -42,19 +46,19 @@ public class GuiBoard extends GridPane {
         int cellWidth = width / board.getSize();
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
-                Rectangle rect = new Rectangle(cellWidth, cellHeight, Color.rgb(91,201,196));
-                rect.setStroke(Color.BLACK);
-                this.add(rect, j, i);
-                if (this.board.getCell(i,j).getDisk() == Sign.kBlacks) {
+                Rectangle rect = new Rectangle(cellWidth, cellHeight, Color.rgb(149,52,157));
+                rect.setStroke(Color.rgb(56,22,149));
+                this.add(rect, j, i);//the board is made of rectangles.
+                if (this.board.getPiece(i,j).getDisk() == Sign.kBlacks) {
                     Circle disk = new Circle(Math.min(cellWidth,cellHeight) /2, gameSettings.getPlayer1Color());
-                    this.add(disk,j,i);
-                } else if (this.board.getCell(i,j).getDisk() == Sign.kWhites) {
+                    this.add(disk,j,i);// draws the discs of the first player.
+                } else if (this.board.getPiece(i,j).getDisk() == Sign.kWhites) {
                     Circle disk = new Circle(Math.min(cellWidth,cellHeight) /2, gameSettings.getPlayer2Color());
-                    this.add(disk,j,i);
-                } else if (this.board.getCell(i, j).getDisk() == Sign.kToFlip) {
+                    this.add(disk,j,i);// draws the discs of the second player.
+                } else if (this.board.getPiece(i, j).getDisk() == Sign.kToFlip) {
                     Circle disk = new Circle(Math.min(cellWidth,cellHeight) /2, Color.TRANSPARENT);
                     disk.setStroke(Color.BLACK);
-                    this.add(disk, j, i);
+                    this.add(disk, j, i);//draws the player's options for moves.
                 }
             }
         }
@@ -62,9 +66,9 @@ public class GuiBoard extends GridPane {
     }
 
     /**
-     * calculates the cell that was clicked.
+     * calculates the piece that was chose by the player.
      * @param event - a mouse click event.
-     * @return - a cell location in the board.
+     * @return - piece on the board.
      */
     public Piece clicked(MouseEvent event) {
         double x =  event.getX();
@@ -73,7 +77,6 @@ public class GuiBoard extends GridPane {
         double cellWidth =  ((this.getPrefWidth() + 10)  / board.getSize());
         int i = (int)(x / cellWidth);
         int j = (int)(y / cellHeight);
-        System.out.println(i + " " + j);
         return new Piece(j, i);
     }
 }

@@ -9,8 +9,15 @@ public class Steps implements Logic {
     private final int kNumOfDirs = 8;
     private ScoreTracker tracker;
 
-    public Steps(ScoreTracker newTracker) {
-        this.tracker = newTracker;
+    /**
+     *  constructor
+     *
+     * @param tracker
+     *
+     *
+     */
+    public Steps(ScoreTracker tracker) {
+        this.tracker = tracker;
     }
 
     @Override
@@ -20,9 +27,9 @@ public class Steps implements Logic {
         char opponentDisk = opponentCell(player.getColor());
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                Piece current = board.getCell(i, j);
+                Piece current = board.getPiece(i, j);
                 if (current.getDisk() == Sign.kEmpty) {
-                    // a possible cell to place a disk
+                    // a possible piece to place a disk
                     if (isPossibleMove(opponentDisk, current, board)) {
                         moves.add(current);
                     }
@@ -39,39 +46,35 @@ public class Steps implements Logic {
         List<Piece> temp = new ArrayList<Piece>();
         int row = 0, col = 0;
         for (int i = 0; i < this.kNumOfDirs; i++) {
-            // iterate through the possible directions in the 2D plain.
             row = piece.getRow();
             col = piece.getCol();
             row += this.dx[i];
             col += this.dy[i];
+            // illegal piece
             if (outOfBounds(row, col, board)) {
-                // illegal direction.
                 continue;
             }
-            Piece currentCheck = board.getCell(row, col);
+            Piece currentCheck = board.getPiece(row, col);
             char disk = currentCheck.getDisk();
             if (disk == opponentDisk) {
-                // iterate through the opponents disks
                 while (disk == opponentDisk) {
                     temp.add(currentCheck);
                     row += this.dx[i];
                     col += this.dy[i];
+                    //not between disks.
                     if (outOfBounds(row, col, board)) {
-                        // not between disks.
                         break;
                     }
-                    currentCheck = board.getCell(row, col);
+                    currentCheck = board.getPiece(row, col);
                     disk = currentCheck.getDisk();
                 }
                 if (outOfBounds(row, col, board)) {
-                    // didn't reach a valid place.
                     temp.clear();
                     continue;
                 }
-                if (board.getCell(row, col)
-                        .getDisk() == opponentCell(opponentDisk)) {
-                    // reached the original player piece from the opponent, means
-                    // it's a valid move.
+                //flip the oll piece
+                if (board.getPiece(row, col) .getDisk() == opponentCell(opponentDisk)) {
+
                     flips.addAll(temp);
                     temp.clear();
                 }
@@ -86,12 +89,12 @@ public class Steps implements Logic {
 
     /**
      *
-     * @param opponentDisk
-     *            - opponent's disk.
-     * @param piece
-     *            - a given piece to check for.
+     * @param opponentDisk opponent's disk
+     *
+     * @param piece piece to check for
+     *
      * @param board
-     *            - a board.
+     *
      * @return - true if possible to place player's disk.
      */
     private boolean isPossibleMove(char opponentDisk, Piece piece, Board board) {
@@ -102,15 +105,15 @@ public class Steps implements Logic {
             col = piece.getCol();
             row += dx[i];
             col += dy[i];
+            // illegal piece
             if (outOfBounds(row, col, board)) {
-                // illegal direction.
+
                 continue;
             }
-            Piece currentCheck = board.getCell(row, col);
+            Piece currentCheck = board.getPiece(row, col);
             char disk = currentCheck.getDisk();
             if (disk == opponentDisk) {
-                // we are not out of bounds, and there is an
-                // opponent disk on the piece, continue checking.
+
                 int rowCol[] = { row, col };
                 if (!iterateOpponentDisks(dx[i], dy[i], rowCol, opponentDisk,
                         board)) {
@@ -120,10 +123,9 @@ public class Steps implements Logic {
                 }
                 row = rowCol[0]; // retrieve updated row val
                 col = rowCol[1]; // retrieve updated col val
-                if (board.getCell(row, col)
+                if (board.getPiece(row, col)
                         .getDisk() == opponentCell(opponentDisk)) {
-                    // reached the original player piece from the opponent, means
-                    // it's a valid move.
+
                     return true;
                 }
             }
@@ -134,11 +136,11 @@ public class Steps implements Logic {
     /**
      *
      * @param row
-     *            - row value.
+     *
      * @param col
-     *            - column value.
+     *
      * @param board
-     *            - a board.
+     *
      * @return - true if out of the bounds of the board.
      */
     private boolean outOfBounds(int row, int col, Board board) {
@@ -148,22 +150,22 @@ public class Steps implements Logic {
 
     /**
      *
-     * @param dx
-     *            - x direction.
-     * @param dy
-     *            - y direction.
-     * @param rowCol
-     *            - row and column values.
-     * @param opponentDisk
-     *            - opponent's disk.
+     * @param dx  x direction
+     *
+     * @param dy y direction
+     *
+     * @param rowCol row and column numbers
+     *
+     * @param opponentDisk opponent's disk
+     *
      * @param board
-     *            - a board.
+     *
      * @return - true if we iterated through the opponents disks without
      *         reaching the end of the board.
      */
     private boolean iterateOpponentDisks(int dx, int dy, int rowCol[],
                                          char opponentDisk, Board board) {
-        Piece currentCheck = board.getCell(rowCol[0], rowCol[1]);
+        Piece currentCheck = board.getPiece(rowCol[0], rowCol[1]);
         char disk = currentCheck.getDisk();
         while (disk == opponentDisk) {
             // iterate through the opponents disks.
@@ -173,7 +175,7 @@ public class Steps implements Logic {
                 // not between disks.
                 return false;
             }
-            currentCheck = board.getCell(rowCol[0], rowCol[1]);
+            currentCheck = board.getPiece(rowCol[0], rowCol[1]);
             disk = currentCheck.getDisk();
         }
         return true;
@@ -181,12 +183,12 @@ public class Steps implements Logic {
 
     /**
      *
-     * @param playerCell
-     *            - a current player cell disk.
-     * @return - the opponent's player cell disk.
+     * @param playerPiece a cuurent player
+     *
+     * @return the sign player
      */
-    private char opponentCell(char playerCell) {
-        if (playerCell == Sign.kWhites) {
+    private char opponentCell(char playerPiece) {
+        if (playerPiece == Sign.kWhites) {
             return Sign.kBlacks;
         }
         return Sign.kWhites;

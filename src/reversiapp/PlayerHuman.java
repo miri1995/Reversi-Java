@@ -8,7 +8,7 @@ public class PlayerHuman implements Player {
 
     /**
      *
-     * @param newColor - a color for the player.
+     * @param newColor color of the player
      */
     public PlayerHuman(char newColor) {
         this.color = newColor;
@@ -49,8 +49,8 @@ public class PlayerHuman implements Player {
 
     /**
      *
-     * @param piece - a chosen piece.
-     * @param moves - a list of possible moves.
+     * @param piece the chosen piece.
+     * @param moves list of possible moves.
      * @return - true if the chosen piece is valid.
      */
     private boolean cellValidity(Piece piece, List<Piece> moves) {
@@ -61,6 +61,11 @@ public class PlayerHuman implements Player {
         }
         return false;
     }
+
+    /**
+     *
+     * @return first/second player
+     */
     public String playerName() {
         if(this.color == Sign.kBlacks) {
             return "First Player";

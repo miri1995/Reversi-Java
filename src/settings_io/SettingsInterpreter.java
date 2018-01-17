@@ -3,15 +3,17 @@ package settings_io;
 import javafx.scene.paint.Color;
 import reversiapp.Sign;
 
+
+/**
+ * c'tor.
+ */
 public class SettingsInterpreter {
     private static boolean colorError = false;
     public static final String kBlack = "Black";
     public static final String kWhite = "White";
 
     /**
-     *
-     * @param startingStr
-     *            - a starting player value line.
+     * @param startingStr - the line of the stating player.
      * @return - true if valid.
      */
     public static boolean isStartingPlayerValid(String startingStr) {
@@ -19,10 +21,8 @@ public class SettingsInterpreter {
     }
 
     /**
-     *
-     * @param colorStr
-     *            - a color string.
-     * @return - true if a valid color representation.
+     * @param colorStr - a color string.
+     * @return - true if the color is valid.
      */
     public static boolean isPlayerColorValid(String colorStr) {
         Color color;
@@ -36,8 +36,8 @@ public class SettingsInterpreter {
 
     /**
      *
-     * @param boardSizeStr - a board size string representation.
-     * @return - true if the board size is valid.
+     * @param boardSizeStr - a board size string.
+     * @return - true if the board size is valid(until 20 and even).
      */
     public static boolean isBoardSizeValid(String boardSizeStr) {
         int boardSize = 0;
@@ -55,9 +55,7 @@ public class SettingsInterpreter {
     }
 
     /**
-     *
-     * @param startingStr
-     *            - a starting value line.
+     * @param startingStr - a starting value line.
      * @return - Enum enum representation.
      */
     public static Enum parseStartingPlayer(String startingStr) {
@@ -85,7 +83,10 @@ public class SettingsInterpreter {
         }
         return color;
     }
-
+    /**
+     * @param boardSizeStr - the board size.
+     * @return - board size.
+     */
     public static int parseBoardSize(String boardSizeStr) {
         int boardSize = 0;
         if (isBoardSizeValid(boardSizeStr)) {

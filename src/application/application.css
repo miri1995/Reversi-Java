@@ -8,7 +8,7 @@
 .button {
 -fx-text-fill: white;
 -fx-font-weight: bold;
--fx-background-color: linear-gradient(#61a2b1, #2A5058);
+-fx-background-color: rgb(62,197,127);
 }.root {
      -fx-background-image: url("menu.jpg")
  }

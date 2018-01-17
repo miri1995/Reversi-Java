@@ -3,7 +3,9 @@ package settings_io;
 import java.io.*;
 
 import reversiapp.GameSettings;
-
+/**
+ * c'tor.
+ */
 public class SettingsReader {
     public static final String kLocation = "settings.txt";
     public static final String kStartingPlayer = "Starting_Player";
@@ -12,6 +14,10 @@ public class SettingsReader {
     public static final String kBoardSize = "Board_Size";
     public static final String kSeparator = ":";
 
+    /**
+     * reads the settings and return them.
+     * @return settings - the settings of the game.
+     */
     public static GameSettings readFile() {
         File filename = new File(kLocation);
         BufferedReader reader = null;
@@ -30,7 +36,11 @@ public class SettingsReader {
         }
         return settings;
     }
-
+    /**
+     * reads the file.
+     * @paran - reader.
+     * @return settings.
+     */
     private static GameSettings parseFile(BufferedReader reader) {
         GameSettings settings = new GameSettings(); // default settings
         String line = readLine(reader);
@@ -63,6 +73,11 @@ public class SettingsReader {
         return line;
     }
 
+    /**
+     * updates the settings.
+     *@param split
+     * @param settings
+     */
     private static void updateSetting(String[] split, GameSettings settings) {
         String field = split[0];
         String value = split[1];

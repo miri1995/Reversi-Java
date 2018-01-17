@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
+    /**
+     *opens the main menu.
+     */
     public void start(Stage primaryStage) {
         try {
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("mainMenu.fxml"));

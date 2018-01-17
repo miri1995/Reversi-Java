@@ -24,14 +24,18 @@ public class SettingsController {
     @FXML
     private RadioButton secondPlayer;
     @FXML
-    private Text messageText;
-    @FXML
     private ColorPicker firstPlayerColor;
     @FXML
     private ColorPicker secondPlayerColor;
     @FXML
     private ChoiceBox boardSize;
     @FXML
+
+
+    /**
+     *defines the board size,player's colors,player's names
+     *according the read file.
+     */
     private void initialize (){
         GameSettings gameSettings = SettingsReader.readFile();
         boardSize.setItems(sizes);
@@ -45,6 +49,10 @@ public class SettingsController {
         }
     }
     @FXML
+    /**
+     *after the player chose the wanted settings.
+     *@param event - a mouse click event.
+     */
     protected void done(javafx.event.ActionEvent event) {
         GameSettings gameSettings = new GameSettings();
         gameSettings.setBoardSize(boardSize.getValue().toString());
@@ -59,6 +67,10 @@ public class SettingsController {
         back(event);
     }
     @FXML
+    /**
+     *if the player chose to return to main menu.
+     *@param event - a mouse click event.
+     */
     protected void back(javafx.event.ActionEvent event) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));

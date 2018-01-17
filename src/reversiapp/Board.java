@@ -5,7 +5,8 @@ public class Board {
     private int size;
 
     /**
-     * C'tor. Sign board size initialized with 8x8.
+     * constructor
+     *
      */
     public Board() {
         this.size = Sign.kSize;
@@ -13,10 +14,10 @@ public class Board {
     }
 
     /**
-     * C'tor.
+     * constructor
      *
-     * @param newSize
-     *            - a size for the board. board will be newSize x newSize.
+     * @param newSize size of the board
+     *
      */
     public Board(int newSize) {
         size = newSize;
@@ -24,17 +25,17 @@ public class Board {
     }
 
     /**
-     * initializes the board.
+     * initializes the board
      */
     private void initBoard() {
-        // board table init
+        //initialize the board
         this.board = new Piece[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 this.board[i][j] = new Piece(i, j);
             }
         }
-        // player disks init
+        //initialize the players
         int mid = (size / 2) - 1;
         int roofMid = (size / 2);
         this.board[mid][mid].setDisk(Sign.kWhites);
@@ -44,8 +45,8 @@ public class Board {
     }
 
     /**
-     *
-     * @return - size of the board.
+     *The function return the size of the board
+     * @return size of the board
      */
     public int getSize() {
         return this.size;
@@ -54,12 +55,12 @@ public class Board {
     /**
      *
      * @param row
-     *            - row index.
+     *
      * @param col
-     *            - column index.
-     * @return - a cell in the corresponding location, null if out of bounds.
+     *
+     * @return the piece in the corresponding location, null if out of bounds.
      */
-    public Piece getCell(int row, int col) {
+    public Piece getPiece(int row, int col) {
         if (row > this.size || col > this.size || row < 0 || col < 0) {
             return null;
         }

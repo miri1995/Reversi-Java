@@ -19,10 +19,10 @@
             <ToggleGroup fx:id="players"/>
         </fx:define>
 
-        <Label text="First Player:" GridPane.rowIndex="2" />
+        <Label text="Name:First Player" GridPane.rowIndex="2" />
         <RadioButton fx:id="firstPlayer" toggleGroup="$players" prefHeight="21.0" prefWidth="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-        <Label text="Second Player:" GridPane.rowIndex="3" />
+        <Label text="Name:Second Player" GridPane.rowIndex="3" />
 
 
         <RadioButton fx:id="secondPlayer" toggleGroup="$players" prefHeight="25.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
